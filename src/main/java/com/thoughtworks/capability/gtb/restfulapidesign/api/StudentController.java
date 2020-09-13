@@ -38,4 +38,10 @@ public class StudentController {
         return ResponseEntity.ok(studentService.getOneStudent(id));
     }
 
+    @PutMapping("/students/{id}")
+    public ResponseEntity updateStudent(@PathVariable int id, @RequestBody Student student) throws StudentsNotExistException {
+        studentService.updateStudent(id,student);
+        return ResponseEntity.noContent().build();
+    }
+
 }

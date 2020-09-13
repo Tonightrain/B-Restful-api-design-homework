@@ -1,5 +1,6 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.service;
 
+import com.thoughtworks.capability.gtb.restfulapidesign.domian.Gender;
 import com.thoughtworks.capability.gtb.restfulapidesign.domian.Student;
 import com.thoughtworks.capability.gtb.restfulapidesign.exception.StudentsNotExistException;
 import com.thoughtworks.capability.gtb.restfulapidesign.repository.StudentRepository;
@@ -38,5 +39,16 @@ public class StudentService {
             throw new StudentsNotExistException("该学生不存在");
         }
         return student.get();
+    }
+
+    public void updateStudent(int id, Student student) throws StudentsNotExistException {
+        Optional<Student> foundStudent = studentRepository.findStudentById(id);
+        if (!foundStudent.isPresent()){
+            throw new StudentsNotExistException("该学生不存在");
+        }
+        Gender genderEnum = student.getGender().getOrdinal() == 0 ? Gender.MALE : Gender.FEMALE;
+        foundStudent.get().setGender(genderEnum);
+        foundStudent.get().setName(student.getName());
+        foundStudent.get().setNote(student.getNote());
     }
 }
