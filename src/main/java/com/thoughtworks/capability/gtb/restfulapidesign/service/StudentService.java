@@ -31,4 +31,12 @@ public class StudentService {
         }
         studentRepository.deleteStudentById(id);
     }
+
+    public Student getOneStudent(int id) throws StudentsNotExistException {
+        Optional<Student> student = studentRepository.findStudentById(id);
+        if (!student.isPresent()){
+            throw new StudentsNotExistException("该学生不存在");
+        }
+        return student.get();
+    }
 }

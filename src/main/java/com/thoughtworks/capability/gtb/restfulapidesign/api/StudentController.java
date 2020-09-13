@@ -33,4 +33,9 @@ public class StudentController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/students/{id}")
+    public ResponseEntity getOneStudent(@PathVariable int id) throws StudentsNotExistException {
+        return ResponseEntity.ok(studentService.getOneStudent(id));
+    }
+
 }
