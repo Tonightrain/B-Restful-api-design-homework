@@ -17,8 +17,11 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public List<Student> getStudents() {
-        return studentRepository.getStudentList();
+    public List<Student> getStudents(Integer gender) {
+        if (gender == null){
+            return studentRepository.getStudentList();
+        }
+        return studentRepository.getStudentListByGender(gender);
     }
 
     public void addStudent(Student student) {

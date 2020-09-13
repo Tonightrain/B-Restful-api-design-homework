@@ -17,8 +17,8 @@ public class StudentController {
     }
 
     @GetMapping("/students")
-    public ResponseEntity getStudents(){
-        return ResponseEntity.ok(studentService.getStudents());
+    public ResponseEntity getStudents(@RequestParam(required = false) Integer gender){
+        return ResponseEntity.ok(studentService.getStudents(gender));
     }
 
     @PostMapping("/students")
@@ -41,7 +41,7 @@ public class StudentController {
     @PutMapping("/students/{id}")
     public ResponseEntity updateStudent(@PathVariable int id, @RequestBody Student student) throws StudentsNotExistException {
         studentService.updateStudent(id,student);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 
 }

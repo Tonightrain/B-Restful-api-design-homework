@@ -16,6 +16,7 @@ public class StudentRepository {
     public StudentRepository() {
         this.studentList = new ArrayList<>();
         Student student = Student.builder().id(1).name("Mike").gender(Gender.FEMALE).note("new student").build();
+
         studentList.add(student);
     }
 
@@ -34,5 +35,10 @@ public class StudentRepository {
 
     public void deleteStudentById(int id) {
         studentList.remove(id-1);
+    }
+
+    public List<Student> getStudentListByGender(Integer gender) {
+        List<Student> studentListByGender = studentList.stream().filter(student -> student.getGender().getOrdinal() == gender.intValue()).collect(Collectors.toList());
+        return studentListByGender;
     }
 }
