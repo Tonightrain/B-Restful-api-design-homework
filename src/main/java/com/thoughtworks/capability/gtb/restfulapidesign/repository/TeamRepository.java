@@ -44,7 +44,7 @@ public class TeamRepository {
         int team = 0;
         for (Student student : studentList){
             teams.get(team).addStudent(student);
-            team = team == 5 ? 0 : team++;
+            team = team == TEAM_NUMBER - 1 ? 0 : team++;
         }
         return teams;
     }
