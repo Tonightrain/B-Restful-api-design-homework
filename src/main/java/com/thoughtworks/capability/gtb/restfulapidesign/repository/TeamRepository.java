@@ -12,7 +12,7 @@ public class TeamRepository {
     private List<Team> teams;
     private final StudentRepository studentRepository;
 
-    public TeamRepository(List<Team> list, StudentRepository studentRepository){
+    public TeamRepository(List<Team> teams, StudentRepository studentRepository){
         this.studentRepository = studentRepository;
         this.teams = new ArrayList<>();
         init();
@@ -20,7 +20,8 @@ public class TeamRepository {
 
     public List<Team> init(){
         for (int i = 1; i < TEAM_NUMBER+1 ; i++) {
-            teams.add(new Team(i,"Team " + i));
+            Team newTeam = Team.builder().id(i).name("Team " + i).teamStudentList(new ArrayList<>()).build();
+            teams.add(newTeam);
         }
         return teams;
     }
@@ -42,10 +43,9 @@ public class TeamRepository {
         }
         int team = 0;
         for (Student student : studentList){
-            teams.get(team).add(student);
-            team = team == TEAM_NUMBER ? 0 : team++;
+            teams.get(team).addStudent(student);
+            team = team == 5 ? 0 : team++;
         }
         return teams;
     }
-
 }

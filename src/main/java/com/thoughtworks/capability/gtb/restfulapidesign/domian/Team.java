@@ -1,6 +1,7 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.domian;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Team {
     private int id;
     private String name;
@@ -24,7 +26,9 @@ public class Team {
         teamStudentList.clear();
     }
 
-    public void add(Student student) {
+
+
+    public void addStudent(Student student) {
         teamStudentList.add(student);
     }
 }

@@ -17,7 +17,7 @@ public class TeamController {
         this.teamService = teamService;
     }
 
-    @GetMapping("/teams/group")
+    @PostMapping("/teams/group")
     public ResponseEntity groupStudents(){
         return ResponseEntity.ok(teamService.groupStudents());
     }
