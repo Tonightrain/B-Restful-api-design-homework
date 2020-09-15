@@ -49,8 +49,7 @@ public class StudentService {
         if (!foundStudent.isPresent()){
             throw new StudentsNotExistException("该学生不存在");
         }
-        Gender genderEnum = student.getGender().getOrdinal() == 0 ? Gender.MALE : Gender.FEMALE;
-        foundStudent.get().setGender(genderEnum);
+        foundStudent.get().setGender(student.getGender());
         foundStudent.get().setName(student.getName());
         foundStudent.get().setNote(student.getNote());
     }

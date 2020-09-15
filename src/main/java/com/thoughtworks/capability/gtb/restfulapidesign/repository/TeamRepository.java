@@ -9,6 +9,7 @@ import java.util.*;
 @Repository
 public class TeamRepository {
     private static final int TEAM_NUMBER = 6;
+    private static final String TEAM_NAME = "Team ";
     private List<Team> teams;
     private final StudentRepository studentRepository;
 
@@ -20,7 +21,7 @@ public class TeamRepository {
 
     public List<Team> init(){
         for (int i = 1; i < TEAM_NUMBER+1 ; i++) {
-            Team newTeam = Team.builder().id(i).name("Team " + i).teamStudentList(new ArrayList<>()).build();
+            Team newTeam = Team.builder().id(i).name(TEAM_NAME + i).teamStudentList(new ArrayList<>()).build();
             teams.add(newTeam);
         }
         return teams;
